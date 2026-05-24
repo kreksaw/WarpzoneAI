@@ -1553,19 +1553,19 @@ ul {
 }
 
 /* ---------------------------------------------------- */
-/*  Warpzone Grand Prix — automatic arcade racing scene */
+/*  Warpzone Chase — Pac-Man hunting ghosts             */
 /*  (replaces the static studios image)                 */
 /* ---------------------------------------------------- */
 
-/* The racing arena occupies a single bento cell — the same footprint as a
-   regular glass card. The cell stretches to match the row's tallest sibling
-   thanks to grid `align-items: stretch`, so the canvas naturally fills the
-   available space without us having to pin a specific aspect ratio. */
-.grand-prix {
+/* The arena occupies a single bento cell — the same footprint as a regular
+   glass card. The cell stretches to match the row's tallest sibling thanks
+   to grid `align-items: stretch`, so the canvas naturally fills the space
+   without us having to pin a specific aspect ratio. */
+.pacman-arena {
   position: relative;
   isolation: isolate;
   background:
-    radial-gradient(120% 80% at 0% 0%, rgba(99, 102, 241, 0.08), transparent 55%),
+    radial-gradient(110% 80% at 0% 0%, rgba(99, 102, 241, 0.10), transparent 55%),
     radial-gradient(100% 80% at 100% 100%, rgba(236, 72, 153, 0.06), transparent 55%),
     linear-gradient(160deg, rgba(8, 11, 24, 0.96) 0%, rgba(4, 6, 14, 0.98) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1574,8 +1574,13 @@ ul {
   transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
 
-/* Override the base .bento-image rule: the canvas, not an <img>, fills it. */
-.grand-prix > .grand-prix-canvas {
+/* Canvas is absolutely positioned to fill the panel WITHOUT contributing to
+   the panel's intrinsic height. This avoids a ResizeObserver feedback loop
+   where the parent's 1px border + the canvas's pixel-set inline height keep
+   nudging each other taller every frame. */
+.pacman-arena > .pacman-canvas {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
@@ -1584,8 +1589,8 @@ ul {
   user-select: none;
 }
 
-/* HUD overlays (badge, lap counter, leaderboard) — layered above the canvas */
-.grand-prix-hud {
+/* HUD overlays (badge + caught counter) — layered above the canvas */
+.pacman-hud {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -1598,21 +1603,15 @@ ul {
   color: #f5f7ff;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
 }
-
-.grand-prix-hud-top {
+.pacman-hud-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 12px;
 }
-.grand-prix-hud-bottom {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
 
-/* Glassy "Warpzone Grand Prix · LIVE" badge in the top-left */
-.gp-badge {
+/* Glassy "Warpzone Chase · LIVE" badge in the top-left */
+.pm-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1627,21 +1626,21 @@ ul {
   text-transform: uppercase;
   color: #e6e8f5;
 }
-.gp-badge-dot {
+.pm-badge-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #fbbf24;
-  box-shadow: 0 0 10px rgba(251, 191, 36, 0.85);
-  animation: gpBadgePulse 1.6s ease-in-out infinite;
+  background: #ffd84a;
+  box-shadow: 0 0 10px rgba(255, 216, 74, 0.9);
+  animation: pmBadgePulse 1.6s ease-in-out infinite;
 }
-@keyframes gpBadgePulse {
+@keyframes pmBadgePulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50%      { opacity: 0.5; transform: scale(0.85); }
 }
 
-/* Lap counter (top-right) */
-.gp-lap {
+/* Caught-ghosts counter (top-right) */
+.pm-score {
   display: inline-flex;
   align-items: baseline;
   gap: 8px;
@@ -1652,83 +1651,54 @@ ul {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
-.gp-lap-label {
+.pm-score-label {
   font-size: 10px;
   letter-spacing: 0.22em;
   color: rgba(245, 247, 255, 0.55);
   text-transform: uppercase;
 }
-.gp-lap-val {
+.pm-score-val {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(16px, 1.8vw, 22px);
-  background: linear-gradient(135deg, #fbbf24 0%, #ec4899 50%, #22d3ee 100%);
+  background: linear-gradient(135deg, #ffd84a 0%, #ec4899 50%, #22d3ee 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Tiny leaderboard chip (bottom-right) showing current order of cars by colour */
-.gp-leaderboard {
-  display: inline-flex;
-  gap: 4px;
-  padding: 6px 10px;
-  border-radius: 100px;
-  background: rgba(8, 10, 22, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  color: rgba(245, 247, 255, 0.6);
-  text-transform: uppercase;
-  align-items: center;
-}
-.gp-leaderboard::before {
-  content: 'P';
-  margin-right: 2px;
-  color: rgba(245, 247, 255, 0.45);
-}
-.gp-lb-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  display: inline-block;
-  box-shadow: 0 0 6px currentColor;
-}
-
-/* Hover state — global glow lift and a subtle scale */
-.grand-prix:hover {
+/* Hover state — global glow lift on the panel */
+.pacman-arena:hover {
   border-color: rgba(160, 180, 255, 0.22);
   box-shadow:
     0 24px 60px rgba(99, 102, 241, 0.18),
     0 1px 0 rgba(255, 255, 255, 0.08) inset;
 }
-.grand-prix:hover .gp-badge-dot { animation-duration: 0.9s; }
+.pacman-arena:hover .pm-badge-dot { animation-duration: 0.9s; }
 
 /* Light theme: keep the arena dark for arcade contrast, add a soft shadow */
-:root[data-theme="light"] .grand-prix {
+:root[data-theme="light"] .pacman-arena {
   box-shadow: 0 14px 48px rgba(15, 23, 42, 0.18);
 }
 
-/* Responsive: in the 2-column layout the cell still naturally stretches to
-   match its row, so we leave it alone. Once the bento collapses to a single
-   column (≤768px), pin a landscape aspect so the arena reads as a wide
-   arcade strip rather than a stubby square. */
+/* Responsive: at the 2-column layout the cell still stretches naturally with
+   its row. Once the bento collapses to a single column (≤768px) we pin an
+   aspect ratio so the arena keeps a maze-friendly square footprint. */
 @media (max-width: 768px) {
-  .grand-prix {
-    aspect-ratio: 16 / 9;
+  .pacman-arena {
+    aspect-ratio: 1 / 1;
     min-height: 0;
   }
 }
 @media (max-width: 600px) {
-  .grand-prix { aspect-ratio: 4 / 3; }
-  .grand-prix-hud { padding: 12px; }
-  .gp-badge { font-size: 10px; padding: 5px 10px; }
+  .pacman-arena { aspect-ratio: 1 / 1; }
+  .pacman-hud   { padding: 12px; }
+  .pm-badge     { font-size: 10px; padding: 5px 10px; }
+  .pm-score     { padding: 5px 10px 5px 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gp-badge-dot { animation: none; }
+  .pm-badge-dot { animation: none; }
 }
 
 /* ---------------------------------------------------- */

@@ -404,23 +404,22 @@
             <h4 data-i18n="step.support.title">Full Support</h4>
             <p data-i18n="step.support.body">Validated titles get full production funding, tool access, and growth support.</p>
           </article>
-          <!-- Warpzone Grand Prix — automatic top-down arcade racing scene.
-               Sits in the bento cell that previously held "Always wanted to
-               self-publish?" so it occupies a single grid cell, matching the
-               size and rhythm of the surrounding glass cards. -->
-          <div class="bento-image grand-prix reveal reveal-delay-2" id="grand-prix-wrap"
+          <!-- Warpzone Chase — auto-played Pac-Man-style scene where a yellow
+               Pac-Man hunts four ghosts through a neon maze. Sits in the
+               bento cell next to the For Studios steps. -->
+          <div class="bento-image pacman-arena reveal reveal-delay-2" id="pacman-wrap"
                role="img"
-               aria-label="Warpzone Grand Prix — animated arcade racing scene with four cars looping a top-down circuit">
-            <canvas id="grand-prix" class="grand-prix-canvas"></canvas>
-            <div class="grand-prix-hud" aria-hidden="true">
-              <div class="grand-prix-hud-top">
-                <div class="gp-badge">
-                  <span class="gp-badge-dot"></span>
-                  <span data-i18n="gp.badge">Warpzone Grand Prix</span>
+               aria-label="Warpzone Chase — animated arcade scene with Pac-Man hunting four ghosts through a neon maze">
+            <canvas id="pacman" class="pacman-canvas"></canvas>
+            <div class="pacman-hud" aria-hidden="true">
+              <div class="pacman-hud-top">
+                <div class="pm-badge">
+                  <span class="pm-badge-dot"></span>
+                  <span data-i18n="pm.badge">Warpzone Chase</span>
                 </div>
-                <div class="gp-lap">
-                  <span class="gp-lap-label" data-i18n="gp.lap">LAP</span>
-                  <span class="gp-lap-val" id="gp-lap-val">01</span>
+                <div class="pm-score">
+                  <span class="pm-score-label" data-i18n="pm.caught">CAUGHT</span>
+                  <span class="pm-score-val" id="pm-score-val">00</span>
                 </div>
               </div>
             </div>
@@ -486,6 +485,6 @@
   <script src="js/main.js"></script>
   <script src="js/game.js" defer></script>
   <script src="js/fund-os.js" defer></script>
-  <script src="js/grand-prix.js" defer></script>
+  <script src="js/pacman.js" defer></script>
 </body>
 </html>

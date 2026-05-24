@@ -79,6 +79,9 @@ window.WZ_I18N = {
     "gp.badge": "Warpzone Grand Prix",
     "gp.lap": "Lap",
 
+    "pm.badge": "Warpzone Chase",
+    "pm.caught": "Caught",
+
     "footer.copy": "© 2025 All rights reserved"
   },
 
@@ -161,6 +164,9 @@ window.WZ_I18N = {
 
     "gp.badge": "Warpzone Grand Prix",
     "gp.lap": "Tour",
+
+    "pm.badge": "Warpzone Chase",
+    "pm.caught": "Attrapés",
 
     "footer.copy": "© 2025 Tous droits réservés"
   },
@@ -245,6 +251,9 @@ window.WZ_I18N = {
     "gp.badge": "Warpzone Grand Prix",
     "gp.lap": "لفة",
 
+    "pm.badge": "مطاردة Warpzone",
+    "pm.caught": "تم اصطيادها",
+
     "footer.copy": "© 2025 جميع الحقوق محفوظة"
   },
 
@@ -327,6 +336,9 @@ window.WZ_I18N = {
 
     "gp.badge": "Warpzone Grand Prix",
     "gp.lap": "圈",
+
+    "pm.badge": "Warpzone 追逐",
+    "pm.caught": "已抓获",
 
     "footer.copy": "© 2025 版权所有"
   }
