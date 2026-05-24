@@ -100,6 +100,11 @@ window.WZ_I18N = {
     "mr.fc.4": "Thin-wrapper storm filtered",
     "mr.fc.5": "Capital deployment: clear",
 
+    "portal.tx.1": "Demo signal detected",
+    "portal.tx.2": "Prototype ready",
+    "portal.tx.3": "Studio ping received",
+    "portal.tx.4": "Warp entry open",
+
     "footer.copy": "© 2025 All rights reserved"
   },
 
@@ -203,6 +208,11 @@ window.WZ_I18N = {
     "mr.fc.3": "Fenêtre de distribution s'ouvre",
     "mr.fc.4": "Tempête thin-wrapper filtrée",
     "mr.fc.5": "Déploiement de capital : clair",
+
+    "portal.tx.1": "Signal démo détecté",
+    "portal.tx.2": "Prototype prêt",
+    "portal.tx.3": "Ping studio reçu",
+    "portal.tx.4": "Entrée warp ouverte",
 
     "footer.copy": "© 2025 Tous droits réservés"
   },
@@ -308,6 +318,11 @@ window.WZ_I18N = {
     "mr.fc.4": "تمت تصفية عاصفة thin-wrapper",
     "mr.fc.5": "نشر رأس المال: واضح",
 
+    "portal.tx.1": "تم رصد إشارة تجريبية",
+    "portal.tx.2": "النموذج الأولي جاهز",
+    "portal.tx.3": "تم استلام إشارة من الاستوديو",
+    "portal.tx.4": "بوابة الوارب مفتوحة",
+
     "footer.copy": "© 2025 جميع الحقوق محفوظة"
   },
 
@@ -411,6 +426,11 @@ window.WZ_I18N = {
     "mr.fc.3": "分发窗口正在打开",
     "mr.fc.4": "薄壳风暴已过滤",
     "mr.fc.5": "资本部署：晴朗",
+
+    "portal.tx.1": "检测到 Demo 信号",
+    "portal.tx.2": "原型已就绪",
+    "portal.tx.3": "已收到工作室 Ping",
+    "portal.tx.4": "Warp 入口开启",
 
     "footer.copy": "© 2025 版权所有"
   }

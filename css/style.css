@@ -776,6 +776,257 @@ ul {
   object-fit: cover;
 }
 
+/* ---------------------------------------------------- */
+/*  Prototype Portal — Final CTA section                */
+/*  (replaces the static team image)                    */
+/* ---------------------------------------------------- */
+
+/* Outer card matches .pitch-image dimensions/border so the surrounding
+   layout never moves when we swap the static image for the portal. */
+.pitch-portal {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  aspect-ratio: 4 / 3;
+  background:
+    radial-gradient(60% 60% at 50% 50%, rgba(99, 102, 241, 0.16) 0%, transparent 70%),
+    radial-gradient(120% 80% at 0% 0%, rgba(34, 211, 238, 0.08), transparent 60%),
+    linear-gradient(160deg, rgba(8, 11, 24, 0.98) 0%, rgba(4, 6, 14, 1) 100%);
+  isolation: isolate;
+  transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+/* Soft scanline so the portal reads as a "screen", matching the radar */
+.pitch-portal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.55) 100%),
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.022) 0 1px, transparent 1px 3px);
+  z-index: 4;
+}
+
+/* Stage wraps every animated layer and centres the core. */
+.portal-stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+/* ---- Background pixel/light fragments ---- */
+.portal-pixels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.portal-pixels span {
+  position: absolute;
+  left: var(--px);
+  top: var(--py);
+  width: 3px;
+  height: 3px;
+  background: rgba(34, 211, 238, 0.55);
+  box-shadow: 0 0 4px rgba(34, 211, 238, 0.6);
+  border-radius: 1px;
+  animation: portalPixelDrift var(--pd, 9s) ease-in-out var(--pdl, 0s) infinite;
+}
+@keyframes portalPixelDrift {
+  0%, 100% { transform: translate(0, 0);    opacity: 0.35; }
+  50%      { transform: translate(0, -5px); opacity: 1; }
+}
+
+/* ---- Concentric pulsing rings ---- */
+.portal-rings {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  z-index: 1;
+}
+.portal-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(160, 180, 255, 0.18);
+  box-shadow: inset 0 0 12px rgba(99, 102, 241, 0.12);
+  animation: portalRingPulse 5s ease-in-out infinite;
+  transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.portal-ring-1 { width: 28%; aspect-ratio: 1; animation-delay: -0.0s; }
+.portal-ring-2 { width: 50%; aspect-ratio: 1; animation-delay: -1.2s; }
+.portal-ring-3 { width: 72%; aspect-ratio: 1; animation-delay: -2.4s; border-style: dashed; opacity: 0.85; }
+.portal-ring-4 { width: 94%; aspect-ratio: 1; animation-delay: -3.6s; opacity: 0.55; }
+@keyframes portalRingPulse {
+  0%, 100% { transform: scale(0.94); opacity: 0.45; }
+  50%      { transform: scale(1.06); opacity: 1.00; }
+}
+
+/* ---- Inflow particle layer (filled by JS) ---- */
+.portal-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+.portal-particle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding: 3px 8px;
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  background: rgba(34, 211, 238, 0.10);
+  border: 1px solid rgba(34, 211, 238, 0.42);
+  color: rgba(245, 247, 255, 0.92);
+  white-space: nowrap;
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.25);
+  /* The "ease-in" curve mimics gravitational acceleration into the core. */
+  animation: portalInflow var(--d, 6s) cubic-bezier(0.45, 0.0, 0.85, 0.55) var(--dl, 0s) infinite;
+  will-change: transform, opacity;
+}
+@keyframes portalInflow {
+  0%   {
+    transform: translate(calc(-50% + var(--sx)), calc(-50% + var(--sy))) scale(1);
+    opacity: 0;
+    filter: blur(0.4px);
+  }
+  16%  { opacity: 1; }
+  82%  { opacity: 0.85; }
+  100% {
+    transform: translate(-50%, -50%) scale(0.18);
+    opacity: 0;
+    filter: blur(1.4px);
+  }
+}
+
+/* ---- Central glowing core ---- */
+.portal-core {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  z-index: 3;
+}
+.portal-core-glow {
+  position: absolute;
+  width: 34%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.55) 0%, rgba(99, 102, 241, 0.15) 38%, transparent 75%);
+  filter: blur(2px);
+  animation: portalCoreBreathe 4s ease-in-out infinite;
+}
+.portal-core-mark {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f5f7ff 0%, #22d3ee 55%, transparent 100%);
+  box-shadow:
+    0 0 22px 4px rgba(34, 211, 238, 0.7),
+    0 0 60px rgba(99, 102, 241, 0.45);
+  animation: portalCoreBreathe 3s ease-in-out infinite;
+  transition: box-shadow 0.4s var(--ease);
+}
+@keyframes portalCoreBreathe {
+  0%, 100% { transform: scale(1);   opacity: 0.85; }
+  50%      { transform: scale(1.14); opacity: 1; }
+}
+
+/* ---- Microcopy ticker chip (lives under the CTA button) ---- */
+.portal-ticker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(34, 211, 238, 0.06);
+  border: 1px solid rgba(34, 211, 238, 0.22);
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(245, 247, 255, 0.78);
+}
+.portal-ticker-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22d3ee;
+  box-shadow: 0 0 8px rgba(34, 211, 238, 0.85);
+  animation: portalTickerPulse 1.6s ease-in-out infinite;
+}
+@keyframes portalTickerPulse {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%      { opacity: 0.45; transform: scale(0.82); }
+}
+.portal-ticker-text {
+  transition: opacity 0.32s var(--ease), transform 0.32s var(--ease);
+}
+.portal-ticker-text.is-out {
+  opacity: 0;
+  transform: translateY(-3px);
+}
+
+/* ---- Hover state — button hover intensifies the portal.
+   Falls back to portal hover if `:has()` isn't supported. ---- */
+.pitch-grid:has(.btn-primary:hover) .pitch-portal,
+.pitch-portal:hover {
+  border-color: rgba(160, 180, 255, 0.32);
+  box-shadow:
+    0 24px 60px rgba(99, 102, 241, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+.pitch-grid:has(.btn-primary:hover) .portal-core-mark,
+.pitch-portal:hover .portal-core-mark {
+  box-shadow:
+    0 0 38px 6px rgba(34, 211, 238, 0.95),
+    0 0 100px rgba(99, 102, 241, 0.7);
+}
+.pitch-grid:has(.btn-primary:hover) .portal-ring,
+.pitch-portal:hover .portal-ring {
+  border-color: rgba(160, 180, 255, 0.5);
+  box-shadow: inset 0 0 18px rgba(99, 102, 241, 0.32);
+}
+/* Speed up particles on hover by halving their per-particle duration. */
+.pitch-grid:has(.btn-primary:hover) .portal-particle,
+.pitch-portal:hover .portal-particle {
+  animation-duration: calc(var(--d, 6s) * 0.55);
+}
+.pitch-grid:has(.btn-primary:hover) .portal-ticker-dot,
+.pitch-portal:hover .portal-ticker-dot {
+  animation-duration: 0.95s;
+}
+
+/* ---- Mobile / single-column ---- */
+@media (max-width: 600px) {
+  .pitch-portal { aspect-ratio: 5 / 4; }
+  .portal-particle { font-size: 8px; padding: 2px 7px; }
+  .portal-ticker { font-size: 9px; letter-spacing: 0.18em; }
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .portal-pixels span,
+  .portal-ring,
+  .portal-core-glow,
+  .portal-core-mark,
+  .portal-ticker-dot { animation: none !important; }
+  .portal-particle { animation: none !important; opacity: 0.8; }
+  .portal-ticker-text { transition: none !important; }
+}
+
 /* Subscribe */
 .subscribe-block {
   display: grid;
@@ -1012,7 +1263,8 @@ ul {
 
 :root[data-theme="light"] .hero-image-wrap,
 :root[data-theme="light"] .bento-image,
-:root[data-theme="light"] .pitch-image {
+:root[data-theme="light"] .pitch-image,
+:root[data-theme="light"] .pitch-portal {
   box-shadow: var(--shadow-card);
 }
 

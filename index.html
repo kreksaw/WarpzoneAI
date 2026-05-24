@@ -474,13 +474,61 @@
               Send us your deck, demo, or just a few lines. We'll take it from there.
             </p>
             <a href="mailto:project@warpzone.ai?subject=Submit%20your%20project%20to%20Warpzone%20AI" class="btn btn-primary btn-lg" data-i18n="cta.submit">Submit your project</a>
+            <!-- Tiny live status chip directly under the button. The text
+                 cycles through short forecast-style messages set by JS. -->
+            <div class="portal-ticker" aria-live="polite">
+              <span class="portal-ticker-dot" aria-hidden="true"></span>
+              <span class="portal-ticker-text" id="portal-ticker-text" data-i18n="portal.tx.1">Demo signal detected</span>
+              <ul class="portal-ticker-data" hidden aria-hidden="true">
+                <li data-i18n="portal.tx.1">Demo signal detected</li>
+                <li data-i18n="portal.tx.2">Prototype ready</li>
+                <li data-i18n="portal.tx.3">Studio ping received</li>
+                <li data-i18n="portal.tx.4">Warp entry open</li>
+              </ul>
+            </div>
           </div>
-          <div class="pitch-image reveal reveal-delay-1">
-            <img
-              src="https://cdn.prod.website-files.com/686bc02317d329bcecd51c83/686bdd76bd8388a55decef0e_530c7e21-2d9c-4d5b-9b3f-893360501281.avif"
-              alt="Team collaboration"
-              loading="lazy"
-            >
+          <!-- Prototype Portal — animated warp visual replacing the static
+               team image. Pure CSS for the rings, core, and pixel field;
+               JS only spawns the inflow "idea" particles and cycles the
+               microcopy chip above. Aspect ratio + border + radius all
+               match the original .pitch-image so the layout is unchanged. -->
+          <div class="pitch-portal reveal reveal-delay-1" id="prototype-portal"
+               role="img"
+               aria-label="Prototype Portal — concentric warp rings with idea particles drifting toward a glowing core, signalling project submissions arriving from studios">
+            <div class="portal-stage" aria-hidden="true">
+              <!-- Background pixel/light fragments -->
+              <div class="portal-pixels">
+                <span style="--px:8%;--py:14%;--pd:9s;--pdl:0s"></span>
+                <span style="--px:88%;--py:22%;--pd:11s;--pdl:-2s"></span>
+                <span style="--px:18%;--py:78%;--pd:8s;--pdl:-4s"></span>
+                <span style="--px:78%;--py:88%;--pd:12s;--pdl:-1s"></span>
+                <span style="--px:36%;--py:8%;--pd:10s;--pdl:-3s"></span>
+                <span style="--px:64%;--py:92%;--pd:9.5s;--pdl:-5s"></span>
+                <span style="--px:6%;--py:62%;--pd:11.5s;--pdl:-6s"></span>
+                <span style="--px:94%;--py:54%;--pd:8.5s;--pdl:-2.5s"></span>
+                <span style="--px:50%;--py:18%;--pd:13s;--pdl:-7s"></span>
+                <span style="--px:50%;--py:82%;--pd:9s;--pdl:-1.5s"></span>
+                <span style="--px:24%;--py:36%;--pd:10.5s;--pdl:-3.5s"></span>
+                <span style="--px:74%;--py:64%;--pd:8.2s;--pdl:-4.5s"></span>
+              </div>
+
+              <!-- Concentric pulsing rings -->
+              <div class="portal-rings">
+                <div class="portal-ring portal-ring-1"></div>
+                <div class="portal-ring portal-ring-2"></div>
+                <div class="portal-ring portal-ring-3"></div>
+                <div class="portal-ring portal-ring-4"></div>
+              </div>
+
+              <!-- Inflow particle layer (filled by JS at load) -->
+              <div class="portal-particles" id="portal-particles"></div>
+
+              <!-- Central glow core -->
+              <div class="portal-core">
+                <div class="portal-core-glow"></div>
+                <div class="portal-core-mark"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -517,6 +565,7 @@
   <script src="js/main.js"></script>
   <script src="js/game.js" defer></script>
   <script src="js/market-radar.js" defer></script>
+  <script src="js/portal.js" defer></script>
   <script src="js/pacman.js" defer></script>
 </body>
 </html>
