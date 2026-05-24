@@ -201,136 +201,168 @@
               <p>We back studios committed to self-publishing, keeping value creation where it belongs.</p>
             </div>
           </article>
-          <!-- Investor Control Panel — animated dashboard replacing the static image -->
-          <div class="bento-image fund-os reveal reveal-delay-1" id="fund-os" role="img"
-               aria-label="Warpzone Fund OS — animated investor dashboard showing live signal score, deal flow pipeline, capital deployment milestones and a DPI timeline">
-            <div class="fund-os-inner">
-              <header class="fund-os-top">
-                <div class="fund-os-id">
-                  <div class="fund-os-mark" aria-hidden="true"></div>
-                  <div class="fund-os-id-text">
-                    <span class="fund-os-name">Warpzone Fund OS</span>
-                    <span class="fund-os-sub">Live signal intelligence</span>
+          <!-- Market Weather Radar — animated investor panel replacing the
+               static image. Almost everything is SVG + CSS; the JS only
+               cycles the bottom forecast ticker and rotates a soft "ping"
+               highlight through the five signal clusters. -->
+          <div class="bento-image market-radar reveal reveal-delay-1" id="market-radar" role="img"
+               aria-label="Market Weather Radar — animated investor panel with rotating radar sweep, drifting isobars, signal clusters and a rolling forecast">
+            <div class="mr-inner">
+
+              <!-- Header — title, subtitle, LIVE chip -->
+              <header class="mr-top">
+                <div class="mr-id">
+                  <div class="mr-mark" aria-hidden="true"></div>
+                  <div class="mr-id-text">
+                    <span class="mr-name" data-i18n="mr.title">Market Weather Radar</span>
+                    <span class="mr-sub"  data-i18n="mr.subtitle">Live signal forecast</span>
                   </div>
                 </div>
-                <div class="fund-os-status">
-                  <span class="fund-os-status-dot" aria-hidden="true"></span>
-                  <span>LIVE</span>
+                <div class="mr-status">
+                  <span class="mr-status-dot" aria-hidden="true"></span>
+                  <span data-i18n="mr.status">Live</span>
                 </div>
               </header>
 
-              <!-- Module 1 — Signal Score -->
-              <div class="fund-os-module fund-os-mod-signal">
-                <div class="fund-os-module-row">
-                  <span class="fund-os-mod-label">Signal Score</span>
-                  <span class="fund-os-mod-tag">AI-native fit</span>
-                </div>
-                <div class="fund-os-signal">
-                  <div class="fund-os-signal-arc">
-                    <svg viewBox="0 0 60 60" aria-hidden="true">
-                      <defs>
-                        <linearGradient id="fund-os-arc-grad" x1="0" y1="0" x2="1" y2="1">
-                          <stop offset="0%" stop-color="#60a5fa"/>
-                          <stop offset="50%" stop-color="#a78bfa"/>
-                          <stop offset="100%" stop-color="#22d3ee"/>
-                        </linearGradient>
-                      </defs>
-                      <circle cx="30" cy="30" r="26" class="fund-os-arc-bg"/>
-                      <circle cx="30" cy="30" r="26" class="fund-os-arc-fg" id="fund-os-arc"/>
-                    </svg>
-                    <span class="fund-os-signal-value" id="fund-os-score">90</span>
-                  </div>
-                  <div class="fund-os-signal-meta">
-                    <div class="fund-os-signal-label">AI-native fit</div>
-                    <div class="fund-os-spark" id="fund-os-spark" aria-hidden="true"></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Module 2 — Deal Flow -->
-              <div class="fund-os-module fund-os-mod-deals">
-                <div class="fund-os-module-row">
-                  <span class="fund-os-mod-label">Deal Flow</span>
-                  <span class="fund-os-mod-tag">5 stages · live</span>
-                </div>
-                <div class="fund-os-pipe" id="fund-os-pipe">
-                  <div class="fund-os-pipe-stages" aria-hidden="true">
-                    <span>Studio</span>
-                    <span>UGC</span>
-                    <span>Retention</span>
-                    <span>Distribution</span>
-                    <span>ARR</span>
-                  </div>
-                  <div class="fund-os-pipe-rail" aria-hidden="true">
-                    <span class="fund-os-pipe-node"></span>
-                    <span class="fund-os-pipe-node"></span>
-                    <span class="fund-os-pipe-node"></span>
-                    <span class="fund-os-pipe-node"></span>
-                    <span class="fund-os-pipe-node"></span>
-                  </div>
-                  <div class="fund-os-pipe-track" id="fund-os-track" aria-hidden="true"></div>
-                </div>
-              </div>
-
-              <!-- Module 3 — Capital Deployment -->
-              <div class="fund-os-module fund-os-mod-capital">
-                <div class="fund-os-module-row">
-                  <span class="fund-os-mod-label">Capital Deployment</span>
-                  <span class="fund-os-mod-tag">Q3 · milestones</span>
-                </div>
-                <div class="fund-os-bars">
-                  <div class="fund-os-bar">
-                    <span class="fund-os-bar-name">Entry</span>
-                    <span class="fund-os-bar-track"><span class="fund-os-bar-fill" style="--target: 35%"></span></span>
-                    <span class="fund-os-bar-val">35%</span>
-                  </div>
-                  <div class="fund-os-bar">
-                    <span class="fund-os-bar-name">KPI Follow-on</span>
-                    <span class="fund-os-bar-track"><span class="fund-os-bar-fill" style="--target: 62%"></span></span>
-                    <span class="fund-os-bar-val">62%</span>
-                  </div>
-                  <div class="fund-os-bar">
-                    <span class="fund-os-bar-name">Early Distribution</span>
-                    <span class="fund-os-bar-track"><span class="fund-os-bar-fill" style="--target: 48%"></span></span>
-                    <span class="fund-os-bar-val">48%</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Module 4 — DPI Timeline -->
-              <div class="fund-os-module fund-os-mod-dpi">
-                <div class="fund-os-module-row">
-                  <span class="fund-os-mod-label">DPI Timeline</span>
-                  <span class="fund-os-mod-tag">YTD</span>
-                </div>
-                <svg class="fund-os-chart" viewBox="0 0 300 80" preserveAspectRatio="none" aria-hidden="true">
+              <!-- Radar — circular SVG playfield. All animations are pure CSS. -->
+              <div class="mr-radar-wrap">
+                <svg class="mr-svg" viewBox="-100 -100 200 200" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                   <defs>
-                    <linearGradient id="fund-os-area-grad" x1="0" x2="0" y1="0" y2="1">
-                      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.45"/>
-                      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+                    <!-- Faint cyan glow at the centre of the radar dish -->
+                    <radialGradient id="mr-bg-grad" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%"   stop-color="#22d3ee" stop-opacity="0.10"/>
+                      <stop offset="55%"  stop-color="#22d3ee" stop-opacity="0.03"/>
+                      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+                    </radialGradient>
+                    <!-- Sweep beam: solid cyan along the leading edge, fading -->
+                    <linearGradient id="mr-sweep-grad" gradientUnits="userSpaceOnUse"
+                                    x1="0" y1="0" x2="0" y2="100">
+                      <stop offset="0%"  stop-color="#22d3ee" stop-opacity="0.55"/>
+                      <stop offset="55%" stop-color="#22d3ee" stop-opacity="0.18"/>
+                      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
                     </linearGradient>
-                    <linearGradient id="fund-os-line-grad" x1="0" x2="1" y1="0" y2="0">
-                      <stop offset="0%" stop-color="#60a5fa"/>
-                      <stop offset="50%" stop-color="#a78bfa"/>
-                      <stop offset="100%" stop-color="#22d3ee"/>
-                    </linearGradient>
+                    <!-- "Hype storm" cell — diffuse red haze -->
+                    <radialGradient id="mr-storm-grad" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%"   stop-color="#ef4444" stop-opacity="0.38"/>
+                      <stop offset="55%"  stop-color="#ef4444" stop-opacity="0.16"/>
+                      <stop offset="100%" stop-color="#ef4444" stop-opacity="0"/>
+                    </radialGradient>
                   </defs>
-                  <g class="fund-os-grid-lines">
-                    <line x1="0" y1="20" x2="300" y2="20"/>
-                    <line x1="0" y1="40" x2="300" y2="40"/>
-                    <line x1="0" y1="60" x2="300" y2="60"/>
+
+                  <!-- Background dish glow -->
+                  <circle r="98" fill="url(#mr-bg-grad)"/>
+
+                  <!-- Isobar pressure lines drifting subtly across the dish -->
+                  <g class="mr-isobars" aria-hidden="true">
+                    <path class="mr-isobar mr-iso-1" d="M-100,-58 Q-50,-78 0,-58 T100,-58"/>
+                    <path class="mr-isobar mr-iso-2" d="M-100,-12 Q-45,-32 15,-12 T100,-12"/>
+                    <path class="mr-isobar mr-iso-3" d="M-100, 30 Q-55, 14 -5, 30 T 100, 30"/>
+                    <path class="mr-isobar mr-iso-4" d="M-100, 70 Q-40, 50  20, 70 T 100, 70"/>
                   </g>
-                  <path id="fund-os-area-path" class="fund-os-area-path" fill="url(#fund-os-area-grad)" d=""/>
-                  <path id="fund-os-line-path" class="fund-os-line-path" stroke="url(#fund-os-line-grad)" stroke-width="2.2" fill="none" d="" stroke-linecap="round" stroke-linejoin="round"/>
-                  <circle id="fund-os-dot" class="fund-os-dot" r="3.5" fill="#22d3ee"/>
+
+                  <!-- Range rings -->
+                  <g class="mr-rings" fill="none">
+                    <circle r="28"/>
+                    <circle r="56"/>
+                    <circle r="80"/>
+                    <circle r="95" class="mr-ring-outer"/>
+                  </g>
+
+                  <!-- 8-axis crosshairs -->
+                  <g class="mr-crosshair">
+                    <line x1="-95" y1="0"   x2="95"  y2="0"/>
+                    <line x1="0"   y1="-95" x2="0"   y2="95"/>
+                    <line x1="-67" y1="-67" x2="67"  y2="67"/>
+                    <line x1="-67" y1="67"  x2="67"  y2="-67"/>
+                  </g>
+
+                  <!-- Hype storm cell — red haze with a small label, painted
+                       BEFORE the sweep so the sweep washes over it. -->
+                  <g class="mr-storm">
+                    <ellipse cx="-52" cy="-22" rx="34" ry="22" fill="url(#mr-storm-grad)"/>
+                    <ellipse cx="-66" cy="-32" rx="18" ry="14" fill="url(#mr-storm-grad)" opacity="0.65"/>
+                    <ellipse cx="-38" cy="-12" rx="14" ry="10" fill="url(#mr-storm-grad)" opacity="0.55"/>
+                    <text class="mr-storm-label" x="-52" y="-21" text-anchor="middle">HYPE STORM</text>
+                  </g>
+
+                  <!-- Rotating sweep beam (CSS keyframes drive the rotation) -->
+                  <g class="mr-sweep">
+                    <path d="M0,0 L95,0 A95,95 0 0,1 0,95 Z" fill="url(#mr-sweep-grad)"/>
+                    <line x1="0" y1="0" x2="95" y2="0" class="mr-sweep-edge"/>
+                  </g>
+
+                  <!-- Signal clusters — five positive blips spread around the dish.
+                       Each <g> gets a phase-shifted CSS pulse and JS occasionally
+                       adds an `is-pinged` class for a soft ring-out flash. -->
+                  <g class="mr-clusters">
+                    <g class="mr-cluster mr-cluster-1" transform="translate(38, -58)">
+                      <circle class="mr-ping" r="0"/>
+                      <circle class="mr-cluster-dot" r="4.4"/>
+                      <text class="mr-cluster-label" x="9" y="3">AI-native</text>
+                    </g>
+                    <g class="mr-cluster mr-cluster-2" transform="translate(78, 6)">
+                      <circle class="mr-ping" r="0"/>
+                      <circle class="mr-cluster-dot" r="3.6"/>
+                      <text class="mr-cluster-label" x="8" y="3">UGC</text>
+                    </g>
+                    <g class="mr-cluster mr-cluster-3" transform="translate(46, 60)">
+                      <circle class="mr-ping" r="0"/>
+                      <circle class="mr-cluster-dot" r="3.6"/>
+                      <text class="mr-cluster-label" x="8" y="3">Retention</text>
+                    </g>
+                    <g class="mr-cluster mr-cluster-4" transform="translate(-36, 68)">
+                      <circle class="mr-ping" r="0"/>
+                      <circle class="mr-cluster-dot" r="3.8"/>
+                      <text class="mr-cluster-label" x="-8" y="3" text-anchor="end">Distribution</text>
+                    </g>
+                    <g class="mr-cluster mr-cluster-5" transform="translate(8, -78)">
+                      <circle class="mr-ping" r="0"/>
+                      <circle class="mr-cluster-dot" r="4.2"/>
+                      <text class="mr-cluster-label" x="9" y="3">ARR</text>
+                    </g>
+                  </g>
+
+                  <!-- Centre receiver dot -->
+                  <circle class="mr-center" r="2.4"/>
                 </svg>
-                <div class="fund-os-chart-labels" aria-hidden="true">
-                  <span>Entry</span>
-                  <span>Launch</span>
-                  <span>Cashflow</span>
-                  <span>DPI</span>
+              </div>
+
+              <!-- Compact 2×2 readout — the four "weather" gauges -->
+              <div class="mr-readout">
+                <div class="mr-stat">
+                  <span class="mr-stat-label" data-i18n="mr.signal.label">Signal</span>
+                  <span class="mr-stat-value" data-i18n="mr.signal.value">Strengthening</span>
+                </div>
+                <div class="mr-stat mr-stat-warn">
+                  <span class="mr-stat-label" data-i18n="mr.hype.label">Hype risk</span>
+                  <span class="mr-stat-value" data-i18n="mr.hype.value">Elevated</span>
+                </div>
+                <div class="mr-stat">
+                  <span class="mr-stat-label" data-i18n="mr.entry.label">Entry window</span>
+                  <span class="mr-stat-value" data-i18n="mr.entry.value">Opening</span>
+                </div>
+                <div class="mr-stat">
+                  <span class="mr-stat-label" data-i18n="mr.dpi.label">DPI outlook</span>
+                  <span class="mr-stat-value" data-i18n="mr.dpi.value">Early cashflow</span>
                 </div>
               </div>
+
+              <!-- Forecast ticker — JS rotates through the hidden translatable
+                   <li> list every few seconds. Keeping the messages in the DOM
+                   means they update automatically when the user changes
+                   language. -->
+              <div class="mr-ticker">
+                <span class="mr-ticker-prefix" data-i18n="mr.forecast">Forecast</span>
+                <span class="mr-ticker-text" id="mr-ticker-text" data-i18n="mr.fc.1">AI-native front forming</span>
+                <ul class="mr-ticker-data" hidden aria-hidden="true">
+                  <li data-i18n="mr.fc.1">AI-native front forming</li>
+                  <li data-i18n="mr.fc.2">UGC pressure rising</li>
+                  <li data-i18n="mr.fc.3">Distribution window opening</li>
+                  <li data-i18n="mr.fc.4">Thin-wrapper storm filtered</li>
+                  <li data-i18n="mr.fc.5">Capital deployment: clear</li>
+                </ul>
+              </div>
+
             </div>
           </div>
           <article class="glass-card reveal reveal-delay-2">
@@ -484,7 +516,7 @@
   <script src="js/translations.js"></script>
   <script src="js/main.js"></script>
   <script src="js/game.js" defer></script>
-  <script src="js/fund-os.js" defer></script>
+  <script src="js/market-radar.js" defer></script>
   <script src="js/pacman.js" defer></script>
 </body>
 </html>

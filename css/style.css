@@ -1056,13 +1056,15 @@ ul {
 }
 
 /* ---------------------------------------------------- */
-/*  Investor Control Panel — "Warpzone Fund OS"         */
+/*  Market Weather Radar — Investor panel               */
 /*  (replaces the static investor image)                */
 /* ---------------------------------------------------- */
-.fund-os {
+
+/* ---- Outer card ---- */
+.market-radar {
   position: relative;
   background:
-    radial-gradient(120% 80% at 0% 0%, rgba(99, 102, 241, 0.10), transparent 55%),
+    radial-gradient(120% 80% at 0% 0%,    rgba(99, 102, 241, 0.10), transparent 55%),
     radial-gradient(100% 80% at 100% 100%, rgba(34, 211, 238, 0.07), transparent 55%),
     linear-gradient(160deg, rgba(15, 18, 38, 0.94) 0%, rgba(8, 10, 22, 0.96) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1072,11 +1074,12 @@ ul {
   display: flex;
   align-items: stretch;
   isolation: isolate;
+  min-height: 480px;
   transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
 }
 
-/* Subtle scanline / vignette so the panel reads as a "screen" */
-.fund-os::after {
+/* Subtle scanline + vignette so the panel reads as a "screen" */
+.market-radar::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -1087,18 +1090,18 @@ ul {
   z-index: 0;
 }
 
-.fund-os-inner {
+.mr-inner {
   position: relative;
   z-index: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: clamp(12px, 1.6vw, 18px);
+  gap: clamp(12px, 1.5vw, 18px);
   padding: clamp(16px, 1.8vw, 22px);
 }
 
 /* ---- Header ---- */
-.fund-os-top {
+.mr-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1106,38 +1109,47 @@ ul {
   padding-bottom: 12px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
-
-.fund-os-id {
+.mr-id {
   display: flex;
   align-items: center;
   gap: 10px;
   min-width: 0;
 }
-
-.fund-os-mark {
+/* Brand mark — a small radar dish glyph (concentric arcs + bottom base) */
+.mr-mark {
   width: 30px;
   height: 30px;
   border-radius: 9px;
-  background: linear-gradient(135deg, #4f46e5 0%, #a855f7 60%, #06b6d4 100%);
+  background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
   position: relative;
   flex-shrink: 0;
-  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.35);
+  box-shadow: 0 6px 18px rgba(34, 211, 238, 0.32);
+  overflow: hidden;
 }
-.fund-os-mark::after {
+.mr-mark::before,
+.mr-mark::after {
   content: '';
   position: absolute;
-  inset: 9px;
-  border-radius: 2px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.45));
-  clip-path: polygon(0% 100%, 50% 0%, 100% 100%, 65% 100%, 50% 35%, 35% 100%);
+  border: 1.4px solid rgba(255, 255, 255, 0.92);
+  border-radius: 50%;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  transform: rotate(45deg);
 }
-
-.fund-os-id-text {
+.mr-mark::before {
+  inset: 5px 5px 11px 5px;
+}
+.mr-mark::after {
+  inset: 9px 9px 11px 9px;
+  opacity: 0.7;
+}
+.mr-id-text {
   display: flex;
   flex-direction: column;
   min-width: 0;
 }
-.fund-os-name {
+.mr-name {
   font-family: var(--font-display);
   font-size: 14px;
   font-weight: 700;
@@ -1145,7 +1157,7 @@ ul {
   line-height: 1.1;
   letter-spacing: 0.005em;
 }
-.fund-os-sub {
+.mr-sub {
   margin-top: 3px;
   font-size: 9px;
   color: rgba(245, 247, 255, 0.5);
@@ -1153,7 +1165,8 @@ ul {
   text-transform: uppercase;
 }
 
-.fund-os-status {
+/* LIVE chip in the corner */
+.mr-status {
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -1167,389 +1180,270 @@ ul {
   color: rgba(207, 255, 230, 0.85);
   flex-shrink: 0;
 }
-.fund-os-status-dot {
+.mr-status-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: #34d399;
   box-shadow: 0 0 8px rgba(52, 211, 153, 0.9);
-  animation: fundOsPulse 1.6s ease-in-out infinite;
+  animation: mrStatusPulse 1.6s ease-in-out infinite;
 }
-
-@keyframes fundOsPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
+@keyframes mrStatusPulse {
+  0%, 100% { opacity: 1;   transform: scale(1); }
   50%      { opacity: 0.5; transform: scale(0.82); }
 }
 
-/* ---- Module shell ---- */
-.fund-os-module {
+/* ---- Radar dish ---- */
+.mr-radar-wrap {
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
 }
-.fund-os-module-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 10px;
-}
-.fund-os-mod-label {
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(245, 247, 255, 0.5);
-  font-weight: 600;
-}
-.fund-os-mod-tag {
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(245, 247, 255, 0.35);
-  white-space: nowrap;
+.mr-svg {
+  width: 100%;
+  height: 100%;
+  max-height: 320px;
+  display: block;
+  overflow: visible;
 }
 
-/* Shared "tile" surface for each module body */
-.fund-os-signal,
-.fund-os-pipe,
-.fund-os-bars {
+/* Isobar pressure curves drifting subtly horizontally */
+.mr-isobars { mix-blend-mode: screen; }
+.mr-isobar {
+  fill: none;
+  stroke: rgba(99, 165, 250, 0.28);
+  stroke-width: 0.6;
+  stroke-linecap: round;
+  transform-box: view-box;
+  transform-origin: center;
+}
+.mr-iso-1 { animation: mrIso1 22s ease-in-out infinite; }
+.mr-iso-2 { animation: mrIso2 26s ease-in-out infinite; }
+.mr-iso-3 { animation: mrIso3 24s ease-in-out infinite; }
+.mr-iso-4 { animation: mrIso4 28s ease-in-out infinite; }
+@keyframes mrIso1 { 0%, 100% { transform: translateX(-3px); } 50% { transform: translateX(3px);  } }
+@keyframes mrIso2 { 0%, 100% { transform: translateX( 3px); } 50% { transform: translateX(-4px); } }
+@keyframes mrIso3 { 0%, 100% { transform: translateX(-2px); } 50% { transform: translateX(4px);  } }
+@keyframes mrIso4 { 0%, 100% { transform: translateX( 2px); } 50% { transform: translateX(-3px); } }
+
+/* Range rings — concentric circles */
+.mr-rings circle {
+  stroke: rgba(160, 180, 255, 0.12);
+  stroke-width: 0.55;
+}
+.mr-ring-outer {
+  stroke: rgba(160, 180, 255, 0.22);
+  stroke-width: 0.7;
+}
+
+/* Crosshair axis lines */
+.mr-crosshair line {
+  stroke: rgba(160, 180, 255, 0.13);
+  stroke-width: 0.5;
+}
+
+/* Sweep beam — rotates around the radar centre.
+   The wedge path's apex is at user-space (0, 0). With transform-box:view-box
+   Chrome resolves transform-origin offsets in user-space units relative to
+   the SVG element's local (0, 0), so we set the origin to "0 0" rather than
+   "center" — otherwise the pivot lands at user-space (100, 100) (the lower-
+   right corner of the dish) and the wedge appears to drift around the
+   centre instead of rotating around its own tip. */
+.mr-sweep {
+  transform-box: view-box;
+  transform-origin: 0 0;
+  animation: mrSweep 8s linear infinite;
+  will-change: transform;
+}
+.mr-sweep-edge {
+  stroke: #22d3ee;
+  stroke-width: 0.7;
+  stroke-opacity: 0.75;
+  filter: drop-shadow(0 0 3px rgba(34, 211, 238, 0.55));
+}
+@keyframes mrSweep {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Hype storm — diffuse red haze that breathes gently */
+.mr-storm {
+  transform-box: view-box;
+  transform-origin: center;
+  animation: mrStormBreathe 5.5s ease-in-out infinite;
+}
+@keyframes mrStormBreathe {
+  0%, 100% { opacity: 0.70; }
+  50%      { opacity: 1.00; }
+}
+.mr-storm-label {
+  font-family: var(--font-display);
+  font-size: 5.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  fill: rgba(255, 215, 215, 0.7);
+}
+
+/* Signal cluster blips — five positive markers around the dish.
+   Each is a small dot with a label and a soft "ping ring" sibling. */
+.mr-cluster-dot {
+  fill: #22d3ee;
+  filter: drop-shadow(0 0 3px rgba(34, 211, 238, 0.85));
+  animation: mrClusterPulse 3.2s ease-in-out infinite;
+}
+.mr-cluster-1 .mr-cluster-dot { animation-delay: -0.0s; }
+.mr-cluster-2 .mr-cluster-dot { animation-delay: -0.7s; }
+.mr-cluster-3 .mr-cluster-dot { animation-delay: -1.4s; }
+.mr-cluster-4 .mr-cluster-dot { animation-delay: -2.1s; }
+.mr-cluster-5 .mr-cluster-dot { animation-delay: -2.8s; }
+@keyframes mrClusterPulse {
+  0%, 100% { opacity: 0.65; }
+  50%      { opacity: 1.00; }
+}
+.mr-cluster-label {
+  font-family: var(--font-body);
+  font-size: 6.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  fill: rgba(245, 247, 255, 0.85);
+}
+
+/* JS-driven "ping" — a ring expanding outward from the dot */
+.mr-ping {
+  fill: none;
+  stroke: rgba(34, 211, 238, 0.85);
+  stroke-width: 0.9;
+  opacity: 0;
+}
+.mr-cluster.is-pinged .mr-ping {
+  animation: mrClusterPing 1.4s ease-out forwards;
+}
+@keyframes mrClusterPing {
+  0%   { r: 4;  opacity: 0.85; stroke-width: 1.1; }
+  100% { r: 22; opacity: 0;    stroke-width: 0.3; }
+}
+
+/* Centre receiver dot */
+.mr-center {
+  fill: #f5f7ff;
+  filter: drop-shadow(0 0 4px rgba(245, 247, 255, 0.85));
+}
+
+/* ---- Readout (2×2 stat grid) ---- */
+.mr-readout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
   padding: 12px 14px;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
-
-/* ---- 1. Signal Score ---- */
-.fund-os-signal {
+.mr-stat {
   display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.fund-os-signal-arc {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  flex-shrink: 0;
-}
-.fund-os-signal-arc svg {
-  width: 100%;
-  height: 100%;
-  transform: rotate(-90deg);
-  overflow: visible;
-}
-.fund-os-arc-bg {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.08);
-  stroke-width: 4;
-}
-.fund-os-arc-fg {
-  fill: none;
-  stroke: url(#fund-os-arc-grad);
-  stroke-width: 4;
-  stroke-linecap: round;
-  stroke-dasharray: 163.36;            /* 2π·26 */
-  stroke-dashoffset: 163.36;
-  transition: stroke-dashoffset 0.8s var(--ease);
-  filter: drop-shadow(0 0 4px rgba(99, 165, 250, 0.5));
-}
-.fund-os-signal-value {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 18px;
-  color: #f5f7ff;
-  letter-spacing: -0.01em;
-}
-.fund-os-signal-meta {
-  flex: 1;
+  flex-direction: column;
+  gap: 2px;
   min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 }
-.fund-os-signal-label {
-  font-size: 13px;
-  font-weight: 500;
-  color: #f5f7ff;
-}
-.fund-os-spark {
-  display: flex;
-  gap: 3px;
-  height: 22px;
-  align-items: flex-end;
-}
-.fund-os-spark span {
-  flex: 1;
-  background: linear-gradient(180deg, rgba(96, 165, 250, 0.85), rgba(167, 139, 250, 0.6));
-  border-radius: 2px;
-  transform-origin: bottom;
-  transform: scaleY(0.3);
-  transition: transform 0.55s var(--ease);
-}
-
-/* ---- 2. Deal Flow pipeline ---- */
-.fund-os-pipe {
-  position: relative;
-  height: 84px;
-  padding: 12px 14px 14px;
-  overflow: hidden;
-}
-.fund-os-pipe-stages {
-  display: flex;
-  justify-content: space-between;
+.mr-stat-label {
   font-size: 9px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(245, 247, 255, 0.45);
-  padding: 0 4px;
-}
-.fund-os-pipe-stages span {
-  flex: 1;
-  text-align: center;
-  white-space: nowrap;
-}
-.fund-os-pipe-rail {
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  top: 50%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(160, 180, 255, 0.18) 12%, rgba(160, 180, 255, 0.28) 50%, rgba(160, 180, 255, 0.18) 88%, transparent 100%);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 6%;
-}
-.fund-os-pipe-node {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(96, 165, 250, 0.65);
-  box-shadow: 0 0 8px rgba(96, 165, 250, 0.55);
-}
-.fund-os-pipe-track {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-/* Token wrap handles horizontal travel; inner token handles drop animation */
-.fund-os-token-wrap {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  will-change: left;
-}
-.fund-os-token {
-  display: inline-block;
-  padding: 4px 9px;
-  border-radius: 100px;
-  font-size: 10px;
+  color: rgba(245, 247, 255, 0.5);
   font-weight: 600;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.32), rgba(139, 92, 246, 0.32));
-  border: 1px solid rgba(160, 180, 255, 0.42);
+}
+.mr-stat-value {
+  font-size: 12px;
   color: #f5f7ff;
-  box-shadow: 0 0 12px rgba(99, 165, 250, 0.28);
-  opacity: 0;
-  transform: translateY(0) scale(0.92);
-  transition: opacity 0.3s ease, transform 0.5s var(--ease), filter 0.3s ease;
-  will-change: transform, opacity;
-}
-.fund-os-token-wrap.is-visible .fund-os-token {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-.fund-os-token.is-bad {
-  background: rgba(255, 80, 100, 0.16);
-  border-color: rgba(255, 130, 150, 0.5);
-  color: rgba(255, 220, 225, 0.95);
-  box-shadow: 0 0 8px rgba(255, 100, 120, 0.22);
-}
-.fund-os-token.is-rejected {
-  opacity: 0;
-  transform: translateY(34px) scale(0.85) rotate(-6deg);
-  filter: blur(0.4px);
-}
-
-/* ---- 3. Capital Deployment bars ---- */
-.fund-os-bars {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.fund-os-bar {
-  display: grid;
-  grid-template-columns: minmax(88px, 0.9fr) minmax(0, 2fr) 38px;
-  align-items: center;
-  gap: 12px;
-}
-.fund-os-bar-name {
-  font-size: 11px;
-  color: rgba(245, 247, 255, 0.78);
+  letter-spacing: 0.005em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.fund-os-bar-track {
-  position: relative;
-  display: block;
-  height: 6px;
-  border-radius: 100px;
-  background: rgba(255, 255, 255, 0.06);
-  overflow: hidden;
-}
-.fund-os-bar-fill {
-  display: block;
-  height: 100%;
-  width: var(--target, 0%);
-  border-radius: 100px;
-  background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
-  transform: scaleX(0);
-  transform-origin: left center;
-  box-shadow: 0 0 10px rgba(99, 102, 241, 0.35);
-  position: relative;
-}
-.fund-os-bar-fill::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  transform: translateX(-100%);
-  opacity: 0;
-}
-.fund-os.is-active .fund-os-bar-fill {
-  animation: fundOsBarFill 1.4s var(--ease) forwards;
-}
-.fund-os.is-active .fund-os-bar:nth-child(1) .fund-os-bar-fill { animation-delay: 0.10s; }
-.fund-os.is-active .fund-os-bar:nth-child(2) .fund-os-bar-fill { animation-delay: 0.30s; }
-.fund-os.is-active .fund-os-bar:nth-child(3) .fund-os-bar-fill { animation-delay: 0.50s; }
+/* Warn variant: tints "Hype risk" amber so it reads as a watch-out */
+.mr-stat-warn .mr-stat-value { color: #fbbf24; }
 
-@keyframes fundOsBarFill {
-  to { transform: scaleX(1); }
-}
-
-.fund-os.is-active .fund-os-bar-fill::after {
-  animation: fundOsBarShimmer 4.5s ease-in-out infinite;
-  animation-delay: inherit;
-}
-@keyframes fundOsBarShimmer {
-  0%, 70% { transform: translateX(-100%); opacity: 0; }
-  72%     { opacity: 0.9; }
-  92%     { transform: translateX(100%); opacity: 0; }
-  100%    { transform: translateX(100%); opacity: 0; }
-}
-
-.fund-os-bar-val {
-  font-size: 11px;
-  font-family: var(--font-display);
-  font-weight: 600;
-  color: #f5f7ff;
-  text-align: right;
-  letter-spacing: 0.02em;
-}
-
-/* ---- 4. DPI Timeline chart ---- */
-.fund-os-chart {
-  display: block;
-  width: 100%;
-  height: 70px;
-  overflow: visible;
-}
-.fund-os-grid-lines line {
-  stroke: rgba(255, 255, 255, 0.06);
-  stroke-width: 1;
-  stroke-dasharray: 2 5;
-}
-.fund-os-line-path {
-  filter: drop-shadow(0 0 6px rgba(99, 165, 250, 0.5));
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  transition: stroke-dashoffset 1.6s var(--ease), filter 0.4s var(--ease);
-}
-.fund-os-area-path {
-  opacity: 0;
-  transition: opacity 1s var(--ease) 0.35s;
-}
-.fund-os-dot {
-  opacity: 0;
-  transition: opacity 0.4s var(--ease) 1.4s;
-  filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.85));
-}
-.fund-os.is-drawn .fund-os-line-path { stroke-dashoffset: 0; }
-.fund-os.is-drawn .fund-os-area-path { opacity: 1; }
-.fund-os.is-drawn .fund-os-dot {
-  opacity: 1;
-  animation: fundOsDotPulse 2.4s ease-in-out infinite 1.6s;
-}
-
-@keyframes fundOsDotPulse {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.35); }
-}
-
-.fund-os-chart-labels {
+/* ---- Forecast ticker ---- */
+.mr-ticker {
   display: flex;
-  justify-content: space-between;
-  margin-top: 6px;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(34, 211, 238, 0.06), rgba(34, 211, 238, 0.02)),
+    rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(34, 211, 238, 0.18);
+  min-width: 0;
+}
+.mr-ticker-prefix {
   font-size: 9px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(245, 247, 255, 0.45);
-  padding: 0 2px;
+  color: rgba(34, 211, 238, 0.85);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.mr-ticker-text {
+  font-size: 12px;
+  color: #f5f7ff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity 0.32s var(--ease), transform 0.32s var(--ease);
+}
+.mr-ticker-text.is-out {
+  opacity: 0;
+  transform: translateY(-4px);
 }
 
-/* ---- Hover state: subtle intensity bump ---- */
-.fund-os:hover {
+/* ---- Hover state: subtle intensity bump + faster sweep ---- */
+.market-radar:hover {
   border-color: rgba(160, 180, 255, 0.22);
   box-shadow:
     0 24px 60px rgba(59, 130, 246, 0.18),
     0 1px 0 rgba(255, 255, 255, 0.08) inset;
   transform: translateY(-2px);
 }
-.fund-os:hover .fund-os-status-dot { animation-duration: 0.95s; }
-.fund-os:hover .fund-os-line-path  { filter: drop-shadow(0 0 10px rgba(99, 165, 250, 0.85)); }
-.fund-os:hover .fund-os-bar-fill   { box-shadow: 0 0 16px rgba(99, 102, 241, 0.55); }
-.fund-os:hover .fund-os-pipe-node  { box-shadow: 0 0 10px rgba(96, 165, 250, 0.85); }
-
-/* The base .bento-image rule sets img { min-height: 320px } — we don't need
-   that here, but keep the wrapper from getting too short on tall side cards. */
-.fund-os {
-  min-height: 480px;
-}
+.market-radar:hover .mr-sweep        { animation-duration: 3.6s; }
+.market-radar:hover .mr-status-dot   { animation-duration: 0.95s; }
+.market-radar:hover .mr-cluster-dot  { filter: drop-shadow(0 0 6px rgba(34, 211, 238, 1)); }
+.market-radar:hover .mr-storm        { opacity: 1; }
+.market-radar:hover .mr-sweep-edge   { filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.95)); }
 
 /* In light mode the panel stays dark for "screen" feel, just lift the shadow */
-:root[data-theme="light"] .fund-os {
+:root[data-theme="light"] .market-radar {
   box-shadow: 0 14px 48px rgba(15, 23, 42, 0.18);
 }
 
-/* On narrow viewports the panel flexes vertically; keep modules legible */
+/* Narrow viewports — the panel stacks under the side cards */
+@media (max-width: 900px) {
+  .market-radar { min-height: 460px; }
+}
 @media (max-width: 600px) {
-  .fund-os { min-height: 0; }
-  .fund-os-inner { padding: 16px; gap: 14px; }
-  .fund-os-pipe { height: 76px; }
-  .fund-os-bar  { grid-template-columns: minmax(80px, 0.9fr) minmax(0, 2fr) 36px; }
+  .market-radar { min-height: 0; }
+  .mr-inner     { padding: 16px; gap: 14px; }
+  .mr-svg       { max-height: 260px; }
+  .mr-readout   { padding: 10px 12px; gap: 8px; }
+  .mr-stat-value, .mr-ticker-text { font-size: 11px; }
 }
 
 /* Reduced motion: kill purely decorative animations */
 @media (prefers-reduced-motion: reduce) {
-  .fund-os-status-dot,
-  .fund-os-dot,
-  .fund-os-bar-fill,
-  .fund-os-bar-fill::after,
-  .fund-os-line-path { animation: none !important; transition: none !important; }
-  .fund-os-line-path { stroke-dashoffset: 0; }
-  .fund-os-bar-fill  { transform: scaleX(1); }
-  .fund-os-area-path { opacity: 1; }
-  .fund-os-dot       { opacity: 1; }
-  .fund-os-arc-fg    { transition: none; }
-  .fund-os-spark span{ transition: none; transform: scaleY(0.7); }
+  .mr-status-dot,
+  .mr-isobar,
+  .mr-sweep,
+  .mr-storm,
+  .mr-cluster-dot { animation: none !important; }
+  .mr-cluster.is-pinged .mr-ping { animation: none !important; opacity: 0; }
+  .mr-ticker-text { transition: none !important; }
+  /* Keep the sweep visible in a single frozen position so the radar still
+     reads as a radar even without rotation. */
+  .mr-sweep { transform: rotate(35deg); }
 }
 
 /* ---------------------------------------------------- */

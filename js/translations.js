@@ -82,6 +82,24 @@ window.WZ_I18N = {
     "pm.badge": "Warpzone Chase",
     "pm.caught": "Caught",
 
+    "mr.title": "Market Weather Radar",
+    "mr.subtitle": "Live signal forecast",
+    "mr.status": "Live",
+    "mr.signal.label": "Signal",
+    "mr.signal.value": "Strengthening",
+    "mr.hype.label": "Hype risk",
+    "mr.hype.value": "Elevated",
+    "mr.entry.label": "Entry window",
+    "mr.entry.value": "Opening",
+    "mr.dpi.label": "DPI outlook",
+    "mr.dpi.value": "Early cashflow",
+    "mr.forecast": "Forecast",
+    "mr.fc.1": "AI-native front forming",
+    "mr.fc.2": "UGC pressure rising",
+    "mr.fc.3": "Distribution window opening",
+    "mr.fc.4": "Thin-wrapper storm filtered",
+    "mr.fc.5": "Capital deployment: clear",
+
     "footer.copy": "© 2025 All rights reserved"
   },
 
@@ -167,6 +185,24 @@ window.WZ_I18N = {
 
     "pm.badge": "Warpzone Chase",
     "pm.caught": "Attrapés",
+
+    "mr.title": "Radar Météo Marché",
+    "mr.subtitle": "Prévisions des signaux en direct",
+    "mr.status": "En direct",
+    "mr.signal.label": "Signal",
+    "mr.signal.value": "Renforcement",
+    "mr.hype.label": "Risque hype",
+    "mr.hype.value": "Élevé",
+    "mr.entry.label": "Fenêtre d'entrée",
+    "mr.entry.value": "Ouverture",
+    "mr.dpi.label": "Perspective DPI",
+    "mr.dpi.value": "Cashflow précoce",
+    "mr.forecast": "Prévision",
+    "mr.fc.1": "Front AI-native en formation",
+    "mr.fc.2": "Pression UGC en hausse",
+    "mr.fc.3": "Fenêtre de distribution s'ouvre",
+    "mr.fc.4": "Tempête thin-wrapper filtrée",
+    "mr.fc.5": "Déploiement de capital : clair",
 
     "footer.copy": "© 2025 Tous droits réservés"
   },
@@ -254,6 +290,24 @@ window.WZ_I18N = {
     "pm.badge": "مطاردة Warpzone",
     "pm.caught": "تم اصطيادها",
 
+    "mr.title": "رادار طقس السوق",
+    "mr.subtitle": "توقعات الإشارات الحية",
+    "mr.status": "مباشر",
+    "mr.signal.label": "الإشارة",
+    "mr.signal.value": "تتقوّى",
+    "mr.hype.label": "خطر الضجيج",
+    "mr.hype.value": "مرتفع",
+    "mr.entry.label": "نافذة الدخول",
+    "mr.entry.value": "تنفتح",
+    "mr.dpi.label": "توقعات DPI",
+    "mr.dpi.value": "تدفّق نقدي مبكر",
+    "mr.forecast": "التوقعات",
+    "mr.fc.1": "تشكّل جبهة AI-native",
+    "mr.fc.2": "تصاعد ضغط UGC",
+    "mr.fc.3": "نافذة التوزيع تنفتح",
+    "mr.fc.4": "تمت تصفية عاصفة thin-wrapper",
+    "mr.fc.5": "نشر رأس المال: واضح",
+
     "footer.copy": "© 2025 جميع الحقوق محفوظة"
   },
 
@@ -339,6 +393,24 @@ window.WZ_I18N = {
 
     "pm.badge": "Warpzone 追逐",
     "pm.caught": "已抓获",
+
+    "mr.title": "市场天气雷达",
+    "mr.subtitle": "实时信号预报",
+    "mr.status": "实时",
+    "mr.signal.label": "信号",
+    "mr.signal.value": "正在增强",
+    "mr.hype.label": "炒作风险",
+    "mr.hype.value": "偏高",
+    "mr.entry.label": "入场窗口",
+    "mr.entry.value": "开启中",
+    "mr.dpi.label": "DPI 展望",
+    "mr.dpi.value": "早期现金流",
+    "mr.forecast": "预报",
+    "mr.fc.1": "AI-native 锋面形成",
+    "mr.fc.2": "UGC 压力上升",
+    "mr.fc.3": "分发窗口正在打开",
+    "mr.fc.4": "薄壳风暴已过滤",
+    "mr.fc.5": "资本部署：晴朗",
 
     "footer.copy": "© 2025 版权所有"
   }
