@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('wz_theme');
+        if (t === 'light' || t === 'dark') {
+          document.documentElement.setAttribute('data-theme', t);
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <title data-i18n="meta.title">Warpzone AI — Funding mobile gaming, leveraging GenAI</title>
+  <meta name="description" data-i18n-attr-content="meta.description" content="Building a mobile gaming VC fund with a unique model: combining smart capital and proprietary GenAI infrastructure. We help studios move faster, test earlier, and build with real data, not just instincts.">
+  <link rel="canonical" href="https://www.warpzone.ai">
+  <link rel="icon" href="https://cdn.prod.website-files.com/686bc02317d329bcecd51c83/686d1ce17435da05acee853f_WZAI%20Logo%2032.gif" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg-mesh" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">
+        <img src="https://cdn.prod.website-files.com/686bc02317d329bcecd51c83/686bc3aa83d46b41974e7de6_Warpzone%20AI%20Logo%20White.svg" alt="Warpzone AI">
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#difference" data-i18n="nav.difference">Our Difference</a></li>
+        <li><a href="#investor" data-i18n="nav.investor">For Investors</a></li>
+        <li><a href="#studios" data-i18n="nav.studios">For Studios</a></li>
+        <li><a href="#subscribe" data-i18n="nav.subscribe">Stay Updated</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="theme-toggle" role="group" aria-label="Color theme">
+          <button class="theme-option" data-theme="light" aria-label="Light mode">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+            </svg>
+          </button>
+          <button class="theme-option" data-theme="dark" aria-label="Dark mode">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="lang-switcher" id="lang-switcher">
+          <button class="lang-button" id="lang-button" aria-haspopup="listbox" aria-expanded="false" aria-label="Choose language">
+            <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M3 12h18"/>
+              <path d="M12 3a14 14 0 0 1 0 18"/>
+              <path d="M12 3a14 14 0 0 0 0 18"/>
+            </svg>
+            <span class="lang-current" id="lang-current">EN</span>
+            <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <ul class="lang-menu" id="lang-menu" role="listbox" aria-label="Languages">
+            <li role="option" data-lang="en"><span class="lang-code">EN</span><span class="lang-name">English</span></li>
+            <li role="option" data-lang="fr"><span class="lang-code">FR</span><span class="lang-name">Français</span></li>
+            <li role="option" data-lang="ar"><span class="lang-code">AR</span><span class="lang-name">العربية</span></li>
+            <li role="option" data-lang="zh"><span class="lang-code">ZH</span><span class="lang-name">中文</span></li>
+          </ul>
+        </div>
+        <a href="#pitch" class="btn btn-primary btn-sm nav-cta" data-i18n="cta.submit">Submit your project</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <header id="home" class="hero section">
+      <div class="container">
+        <div class="hero-content reveal">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Operating VC · GenAI Infrastructure</p>
+          <h1 class="hero-title" data-i18n="hero.title">
+            Funding the future of mobile gaming,
+            <span class="gradient-text">leveraging the growing power of GenAI</span>
+          </h1>
+          <p class="hero-sub" data-i18n="hero.sub">
+            We are building a mobile gaming-focused VC fund with a unique model: combining smart capital and proprietary GenAI-native infrastructure. We help studios move faster, test earlier, and build with real data, not just instincts.
+          </p>
+          <ul class="hero-points">
+            <li><span class="point-marker">_</span><span data-i18n="hero.point1">Unmatched creative power for founders.</span></li>
+            <li><span class="point-marker">_</span><span data-i18n="hero.point2">More visibility for investors.</span></li>
+            <li><span class="point-marker">_</span><span data-i18n="hero.point3">Better odds for everyone.</span></li>
+          </ul>
+        </div>
+        <div class="hero-visual reveal reveal-delay-1">
+          <div class="hero-image-wrap">
+            <img
+              src="https://cdn.prod.website-files.com/686bc02317d329bcecd51c83/686bc1e9fcad67e24653f1a2_a42a4133-33fd-4d37-bf7e-70f3d3337152.avif"
+              alt="Gaming workspace with analytics dashboard"
+              loading="eager"
+            >
+            <div class="hero-image-glow"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="difference" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title" data-i18n="difference.title">What sets us apart</h2>
+        </div>
+        <div class="bento-grid bento-2">
+          <article class="glass-card reveal">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12C15.134 12 12 15.134 12 19C12 15.134 8.866 12 5 12C8.866 12 12 8.866 12 5C12 8.866 15.134 12 19 12Z" stroke-linejoin="round"/><path d="M8 16L5.5 18.5M8 8L5.5 5.5M16 16L18.5 18.5M16 8L18.5 5.5"/></svg>
+            </div>
+            <h3 data-i18n="model.title">Our model</h3>
+            <div data-i18n="model.body">
+              <p>We're building an Operating VC with embedded GenAI infrastructure.</p>
+              <p>Studios don't just get funding, they get:</p>
+              <ul class="card-list">
+                <li>Proprietary tools for content and code generation, KPI tracking, and marketing optimization</li>
+                <li>Real-time UA testing from day one</li>
+                <li>Strategic support from a hands-on growth team</li>
+              </ul>
+              <p class="card-highlight">You build. We de-risk, validate, and amplify.</p>
+            </div>
+          </article>
+          <article class="glass-card reveal reveal-delay-1">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.5 9C9.5 7.619 10.619 6.5 12 6.5c1.381 0 2.5 1.119 2.5 2.5S13.381 11.5 12 11.5 9.5 10.381 9.5 9zM12 5c-2.209 0-4 1.791-4 4s1.791 4 4 4 4-1.791 4-4-1.791-4-4-4zM8.75 13.5C6.679 13.5 5 15.179 5 17.25V19h1.5v-1.75c0-1.243 1.007-2.25 2.25-2.25h6.5c1.243 0 2.25 1.007 2.25 2.25V19H19v-1.75C19 15.179 17.321 13.5 15.25 13.5h-6.5z"/></svg>
+            </div>
+            <h3 data-i18n="team.title">Our Team</h3>
+            <div data-i18n="team.body">
+              <p>We're not tourists in gaming or AI, we're operators with skin in the game.</p>
+              <ul class="card-list">
+                <li>20+ years in mobile game dev and publishing (Gameloft, EA Mobile, Ubisoft and more)</li>
+                <li>Proven expertise in GenAI for game production and creative process automation</li>
+                <li>Repeat founders, exited investors, early builders</li>
+              </ul>
+              <p><strong>We've built GenAI tools made for studios. And we're building more because we use what we invest in.</strong></p>
+            </div>
+          </article>
+        </div>
+        <div class="segment-toggle reveal">
+          <a href="#investor" class="btn btn-primary" data-i18n="segment.investor">I'm an Investor</a>
+          <a href="#studios" class="btn btn-ghost" data-i18n="segment.studio">I'm a Studio</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="investor" class="section section-alt">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title" data-i18n="investor.title">For Investors</h2>
+          <p class="section-lead" data-i18n="investor.lead">
+            We're not just betting on studios.<br>
+            We're building an investment model that's aligned, efficient, and engineered for performance.<br><br>
+            Faster signals. Earlier distributions. Tighter control.<br>
+            This is venture, rebuilt for LPs.
+          </p>
+        </div>
+        <div class="bento-grid bento-investor">
+          <article class="glass-card reveal">
+            <h3 data-i18n="smart.title">Smart Capital Deployment</h3>
+            <div data-i18n="smart.body">
+              <ul class="card-list">
+                <li>Early-stage entry through small checks</li>
+                <li>Scalable follow-ons based on real KPIs</li>
+                <li>Diversified investment instruments to balance risk and return</li>
+                <li>Single-investor model for full alignment and control</li>
+              </ul>
+              <p>We back studios committed to self-publishing, keeping value creation where it belongs.</p>
+            </div>
+          </article>
+          <div class="bento-image reveal reveal-delay-1">
+            <img
+              src="https://cdn.prod.website-files.com/686bc02317d329bcecd51c83/686bdaec74ffec430b3c3ffc_bfdbed89-2c61-460a-8fc6-697258c8b156.avif"
+              alt="Mobile gaming analytics on smartphone"
+              loading="lazy"
+            >
+          </div>
+          <article class="glass-card reveal reveal-delay-2">
+            <h3 data-i18n="lp.title">LP-First Design for 2025</h3>
+            <div data-i18n="lp.body">
+              <ul class="card-list">
+                <li>Fast DPI: early distributions triggered by live cashflow</li>
+                <li>Exclusive rights: co-investment opportunities, no outside VC participation</li>
+                <li>Capital efficiency: milestone-based deployment, not hype-based fundraising</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+        <p class="section-tagline reveal" data-i18n="investor.tagline">
+          Be early. Be exclusive.<br>
+          Be part of the next breakout studios before the market catches up.
+        </p>
+      </div>
+    </section>
+
+    <section id="studios" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title" data-i18n="studios.title">For Studios</h2>
+          <p class="section-lead" data-i18n="studios.lead">
+            We're not just offering capital.<br>
+            We're building the tools and support stack that lets game creators move faster and make better bets.<br><br>
+            Faster prototyping. Real player feedback. Smarter funding.<br>
+            This is game funding reinvented for builders not just believers.
+          </p>
+        </div>
+        <div class="bento-grid bento-studios">
+          <article class="glass-card reveal">
+            <h3 data-i18n="build.title">Build, Test, and Refine</h3>
+            <div data-i18n="build.body">
+              <ul class="card-list">
+                <li>Launch real user tests on day one</li>
+                <li>Get authentic player feedback immediately</li>
+                <li>Scale only what works</li>
+              </ul>
+              <p class="card-highlight">Be bold. Be iterative.<br>Be first to ship what matters.</p>
+            </div>
+          </article>
+          <article class="glass-card reveal reveal-delay-1">
+            <h3 data-i18n="how.title">How it works</h3>
+            <div data-i18n="how.body">
+              <p>We don't ask you to prove your game will work.<br>We help you find out.</p>
+              <p>From prototype to traction, our model is designed to give studios the right signals at the right time, so every decision is data-backed, not guesswork.</p>
+            </div>
+          </article>
+          <article class="glass-card reveal reveal-delay-2">
+            <h3 data-i18n="control.title">Keep control</h3>
+            <div data-i18n="control.body">
+              <p>No need to chase more funding halfway through.<br>We back the full build.</p>
+              <p>Our model is designed so founders keep majority ownership, especially at exit.</p>
+            </div>
+          </article>
+          <article class="glass-card reveal">
+            <div class="step-label">01</div>
+            <h4 data-i18n="step.proto.title">Prototype</h4>
+            <p data-i18n="step.proto.body">Build your MVP using our GenAI suite.<br>We fund user acquisition testing right away.</p>
+            <div class="step-label">02</div>
+            <h4 data-i18n="step.live.title">Live Data</h4>
+            <p data-i18n="step.live.body">Track retention, engagement, monetization from actual players.</p>
+          </article>
+          <article class="glass-card reveal reveal-delay-1">
+            <div class="step-label">03</div>
+            <h4 data-i18n="step.scale.title">Scale or Pivot</h4>
+            <p data-i18n="step.scale.body">If KPIs are strong, we invest more.<br>If not, iterate fast — or kill early.</p>
+            <div class="step-label">04</div>
+            <h4 data-i18n="step.support.title">Full Support</h4>
+            <p data-i18n="step.support.body">Validated titles get full production funding, tool access, and growth support.</p>
+          </article>
+          <article class="glass-card reveal reveal-delay-2">
+            <h3 data-i18n="self.title">Always wanted to self-publish?</h3>
+            <p data-i18n="self.body">Our model, funding, and GenAI tools give you everything you need to own your games and your success.</p>
+          </article>
+          <div class="bento-image bento-image-tall reveal reveal-delay-1">
+            <img
+              src="https://cdn.prod.website-files.com/686bc02317d329bcecd51c83/6877b67780d1bf2dcd1c28ff_0fa82ddd-8ebd-4062-99f7-517419a12fc1.avif"
+              alt="Game development workspace"
+              loading="lazy"
+            >
+          </div>
+        </div>
+        <p class="section-tagline reveal" data-i18n="studios.tagline">
+          AI lets you move faster.<br>
+          We make sure you're moving in the right direction.
+        </p>
+      </div>
+    </section>
+
+    <section id="pitch" class="section section-alt">
+      <div class="container">
+        <div class="pitch-grid">
+          <div class="pitch-content reveal">
+            <h2 class="section-title" data-i18n="pitch.title">Working on something new?</h2>
+            <p class="section-lead" data-i18n="pitch.lead">
+              If you're building a game, and believe AI can elevate it, we want to hear from you. We back bold teams with prototypes, insights, and ambition.<br><br>
+              Send us your deck, demo, or just a few lines. We'll take it from there.
+            </p>
+            <a href="mailto:project@warpzone.ai?subject=Submit%20your%20project%20to%20Warpzone%20AI" class="btn btn-primary btn-lg" data-i18n="cta.submit">Submit your project</a>
+          </div>
+          <div class="pitch-image reveal reveal-delay-1">
+            <img
+              src="https://cdn.prod.website-files.com/686bc02317d329bcecd51c83/686bdd76bd8388a55decef0e_530c7e21-2d9c-4d5b-9b3f-893360501281.avif"
+              alt="Team collaboration"
+              loading="lazy"
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="subscribe" class="section">
+      <div class="container">
+        <div class="subscribe-block glass-card reveal">
+          <h2 class="subscribe-title" data-i18n="subscribe.title">Stay updated</h2>
+          <div class="subscribe-content">
+            <p data-i18n="subscribe.body">Want updates from the front lines of GenAI and gaming?<br><br>→ Subscribe to the newsletter.<br>No fluff, just signal.</p>
+            <a href="mailto:optin@warpzone.ai?subject=Stay%20updated%20with%20Warpzone%20AI" class="btn btn-primary" data-i18n="subscribe.cta">Subscribe</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="#home" class="footer-logo">
+        <img src="https://cdn.prod.website-files.com/686bc02317d329bcecd51c83/686bc3aa83d46b41974e7de6_Warpzone%20AI%20Logo%20White.svg" alt="Warpzone AI">
+      </a>
+      <a href="https://www.linkedin.com/company/warpzone-ai/" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="LinkedIn">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M15.3,0H0.7C0.3,0,0,0.3,0,0.7v14.7C0,15.7,0.3,16,0.7,16h14.7c0.4,0,0.7-0.3,0.7-0.7V0.7 C16,0.3,15.7,0,15.3,0z M4.7,13.6H2.4V6h2.4V13.6z M3.6,5C2.8,5,2.2,4.3,2.2,3.6c0-0.8,0.6-1.4,1.4-1.4c0.8,0,1.4,0.6,1.4,1.4 C4.9,4.3,4.3,5,3.6,5z M13.6,13.6h-2.4V9.9c0-0.9,0-2-1.2-2c-1.2,0-1.4,1-1.4,2v3.8H6.2V6h2.3v1h0c0.3-0.6,1.1-1.2,2.2-1.2 c2.4,0,2.8,1.6,2.8,3.6V13.6z"/></svg>
+      </a>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copy">© 2025 All rights reserved</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
