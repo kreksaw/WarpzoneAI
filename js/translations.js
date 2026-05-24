@@ -70,6 +70,15 @@ window.WZ_I18N = {
     "subscribe.body": "Want updates from the front lines of GenAI and gaming?<br><br>→ Subscribe to the newsletter.<br>No fluff, just signal.",
     "subscribe.cta": "Subscribe",
 
+    "game.badge": "Deal Runner",
+    "game.score": "Score",
+    "game.best": "Best",
+    "game.hint": "Move your cursor inside to play. Catch deals, dodge red flags.",
+    "game.hint.touch": "Tap and drag inside to play.",
+
+    "gp.badge": "Warpzone Grand Prix",
+    "gp.lap": "Lap",
+
     "footer.copy": "© 2025 All rights reserved"
   },
 
@@ -143,6 +152,15 @@ window.WZ_I18N = {
     "subscribe.title": "Restez informé",
     "subscribe.body": "Vous voulez des nouvelles de la ligne de front de la GenAI et du gaming ?<br><br>→ Abonnez-vous à la newsletter.<br>Pas de bla-bla, que du signal.",
     "subscribe.cta": "S'abonner",
+
+    "game.badge": "Deal Runner",
+    "game.score": "Score",
+    "game.best": "Record",
+    "game.hint": "Déplacez votre curseur dans le cadre pour jouer. Attrapez les deals, évitez les red flags.",
+    "game.hint.touch": "Touchez et faites glisser pour jouer.",
+
+    "gp.badge": "Warpzone Grand Prix",
+    "gp.lap": "Tour",
 
     "footer.copy": "© 2025 Tous droits réservés"
   },
@@ -218,6 +236,15 @@ window.WZ_I18N = {
     "subscribe.body": "تريد تحديثات من الخطوط الأمامية للذكاء الاصطناعي التوليدي والألعاب؟<br><br>→ اشترك في النشرة.<br>لا حشو، فقط معلومات قيّمة.",
     "subscribe.cta": "اشترك",
 
+    "game.badge": "Deal Runner",
+    "game.score": "النقاط",
+    "game.best": "الأفضل",
+    "game.hint": "حرّك المؤشر داخل الإطار للعب. اجمع الصفقات وتجنّب الإشارات الحمراء.",
+    "game.hint.touch": "المس واسحب داخل الإطار للعب.",
+
+    "gp.badge": "Warpzone Grand Prix",
+    "gp.lap": "لفة",
+
     "footer.copy": "© 2025 جميع الحقوق محفوظة"
   },
 
@@ -291,6 +318,15 @@ window.WZ_I18N = {
     "subscribe.title": "保持更新",
     "subscribe.body": "想从 GenAI 与游戏的前线获取最新动态？<br><br>→ 订阅我们的简报。<br>不灌水，只传递信号。",
     "subscribe.cta": "订阅",
+
+    "game.badge": "Deal Runner",
+    "game.score": "得分",
+    "game.best": "最佳",
+    "game.hint": "把光标移入画面开始游戏。抓住好交易，避开红旗信号。",
+    "game.hint.touch": "在画面内按住并拖动来游戏。",
+
+    "gp.badge": "Warpzone Grand Prix",
+    "gp.lap": "圈",
 
     "footer.copy": "© 2025 版权所有"
   }

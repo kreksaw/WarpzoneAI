@@ -105,12 +105,27 @@
           </ul>
         </div>
         <div class="hero-visual reveal reveal-delay-1">
-          <div class="hero-image-wrap">
-            <img
-              src="https://cdn.prod.website-files.com/686bc02317d329bcecd51c83/686bc1e9fcad67e24653f1a2_a42a4133-33fd-4d37-bf7e-70f3d3337152.avif"
-              alt="Gaming workspace with analytics dashboard"
-              loading="eager"
-            >
+          <div class="hero-image-wrap game-wrap" id="game-wrap">
+            <canvas id="deal-runner" class="game-canvas" aria-label="Deal Runner — interactive mini-game"></canvas>
+            <div class="game-hud" aria-hidden="true">
+              <div class="game-hud-top">
+                <div class="game-badge">
+                  <span class="game-badge-dot"></span>
+                  <span data-i18n="game.badge">Deal Runner</span>
+                </div>
+                <div class="game-score">
+                  <span class="game-score-label" data-i18n="game.score">SCORE</span>
+                  <span class="game-score-value" id="game-score">0</span>
+                  <span class="game-score-best">
+                    <span data-i18n="game.best">BEST</span>
+                    <span id="game-best">0</span>
+                  </span>
+                </div>
+              </div>
+              <div class="game-hud-bottom">
+                <p class="game-hint" id="game-hint" data-i18n="game.hint">Move your cursor inside to play. Catch deals, dodge red flags.</p>
+              </div>
+            </div>
             <div class="hero-image-glow"></div>
           </div>
         </div>
@@ -186,12 +201,137 @@
               <p>We back studios committed to self-publishing, keeping value creation where it belongs.</p>
             </div>
           </article>
-          <div class="bento-image reveal reveal-delay-1">
-            <img
-              src="https://cdn.prod.website-files.com/686bc02317d329bcecd51c83/686bdaec74ffec430b3c3ffc_bfdbed89-2c61-460a-8fc6-697258c8b156.avif"
-              alt="Mobile gaming analytics on smartphone"
-              loading="lazy"
-            >
+          <!-- Investor Control Panel — animated dashboard replacing the static image -->
+          <div class="bento-image fund-os reveal reveal-delay-1" id="fund-os" role="img"
+               aria-label="Warpzone Fund OS — animated investor dashboard showing live signal score, deal flow pipeline, capital deployment milestones and a DPI timeline">
+            <div class="fund-os-inner">
+              <header class="fund-os-top">
+                <div class="fund-os-id">
+                  <div class="fund-os-mark" aria-hidden="true"></div>
+                  <div class="fund-os-id-text">
+                    <span class="fund-os-name">Warpzone Fund OS</span>
+                    <span class="fund-os-sub">Live signal intelligence</span>
+                  </div>
+                </div>
+                <div class="fund-os-status">
+                  <span class="fund-os-status-dot" aria-hidden="true"></span>
+                  <span>LIVE</span>
+                </div>
+              </header>
+
+              <!-- Module 1 — Signal Score -->
+              <div class="fund-os-module fund-os-mod-signal">
+                <div class="fund-os-module-row">
+                  <span class="fund-os-mod-label">Signal Score</span>
+                  <span class="fund-os-mod-tag">AI-native fit</span>
+                </div>
+                <div class="fund-os-signal">
+                  <div class="fund-os-signal-arc">
+                    <svg viewBox="0 0 60 60" aria-hidden="true">
+                      <defs>
+                        <linearGradient id="fund-os-arc-grad" x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0%" stop-color="#60a5fa"/>
+                          <stop offset="50%" stop-color="#a78bfa"/>
+                          <stop offset="100%" stop-color="#22d3ee"/>
+                        </linearGradient>
+                      </defs>
+                      <circle cx="30" cy="30" r="26" class="fund-os-arc-bg"/>
+                      <circle cx="30" cy="30" r="26" class="fund-os-arc-fg" id="fund-os-arc"/>
+                    </svg>
+                    <span class="fund-os-signal-value" id="fund-os-score">90</span>
+                  </div>
+                  <div class="fund-os-signal-meta">
+                    <div class="fund-os-signal-label">AI-native fit</div>
+                    <div class="fund-os-spark" id="fund-os-spark" aria-hidden="true"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Module 2 — Deal Flow -->
+              <div class="fund-os-module fund-os-mod-deals">
+                <div class="fund-os-module-row">
+                  <span class="fund-os-mod-label">Deal Flow</span>
+                  <span class="fund-os-mod-tag">5 stages · live</span>
+                </div>
+                <div class="fund-os-pipe" id="fund-os-pipe">
+                  <div class="fund-os-pipe-stages" aria-hidden="true">
+                    <span>Studio</span>
+                    <span>UGC</span>
+                    <span>Retention</span>
+                    <span>Distribution</span>
+                    <span>ARR</span>
+                  </div>
+                  <div class="fund-os-pipe-rail" aria-hidden="true">
+                    <span class="fund-os-pipe-node"></span>
+                    <span class="fund-os-pipe-node"></span>
+                    <span class="fund-os-pipe-node"></span>
+                    <span class="fund-os-pipe-node"></span>
+                    <span class="fund-os-pipe-node"></span>
+                  </div>
+                  <div class="fund-os-pipe-track" id="fund-os-track" aria-hidden="true"></div>
+                </div>
+              </div>
+
+              <!-- Module 3 — Capital Deployment -->
+              <div class="fund-os-module fund-os-mod-capital">
+                <div class="fund-os-module-row">
+                  <span class="fund-os-mod-label">Capital Deployment</span>
+                  <span class="fund-os-mod-tag">Q3 · milestones</span>
+                </div>
+                <div class="fund-os-bars">
+                  <div class="fund-os-bar">
+                    <span class="fund-os-bar-name">Entry</span>
+                    <span class="fund-os-bar-track"><span class="fund-os-bar-fill" style="--target: 35%"></span></span>
+                    <span class="fund-os-bar-val">35%</span>
+                  </div>
+                  <div class="fund-os-bar">
+                    <span class="fund-os-bar-name">KPI Follow-on</span>
+                    <span class="fund-os-bar-track"><span class="fund-os-bar-fill" style="--target: 62%"></span></span>
+                    <span class="fund-os-bar-val">62%</span>
+                  </div>
+                  <div class="fund-os-bar">
+                    <span class="fund-os-bar-name">Early Distribution</span>
+                    <span class="fund-os-bar-track"><span class="fund-os-bar-fill" style="--target: 48%"></span></span>
+                    <span class="fund-os-bar-val">48%</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Module 4 — DPI Timeline -->
+              <div class="fund-os-module fund-os-mod-dpi">
+                <div class="fund-os-module-row">
+                  <span class="fund-os-mod-label">DPI Timeline</span>
+                  <span class="fund-os-mod-tag">YTD</span>
+                </div>
+                <svg class="fund-os-chart" viewBox="0 0 300 80" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="fund-os-area-grad" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.45"/>
+                      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="fund-os-line-grad" x1="0" x2="1" y1="0" y2="0">
+                      <stop offset="0%" stop-color="#60a5fa"/>
+                      <stop offset="50%" stop-color="#a78bfa"/>
+                      <stop offset="100%" stop-color="#22d3ee"/>
+                    </linearGradient>
+                  </defs>
+                  <g class="fund-os-grid-lines">
+                    <line x1="0" y1="20" x2="300" y2="20"/>
+                    <line x1="0" y1="40" x2="300" y2="40"/>
+                    <line x1="0" y1="60" x2="300" y2="60"/>
+                  </g>
+                  <path id="fund-os-area-path" class="fund-os-area-path" fill="url(#fund-os-area-grad)" d=""/>
+                  <path id="fund-os-line-path" class="fund-os-line-path" stroke="url(#fund-os-line-grad)" stroke-width="2.2" fill="none" d="" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle id="fund-os-dot" class="fund-os-dot" r="3.5" fill="#22d3ee"/>
+                </svg>
+                <div class="fund-os-chart-labels" aria-hidden="true">
+                  <span>Entry</span>
+                  <span>Launch</span>
+                  <span>Cashflow</span>
+                  <span>DPI</span>
+                </div>
+              </div>
+            </div>
           </div>
           <article class="glass-card reveal reveal-delay-2">
             <h3 data-i18n="lp.title">LP-First Design for 2025</h3>
@@ -264,16 +404,26 @@
             <h4 data-i18n="step.support.title">Full Support</h4>
             <p data-i18n="step.support.body">Validated titles get full production funding, tool access, and growth support.</p>
           </article>
-          <article class="glass-card reveal reveal-delay-2">
-            <h3 data-i18n="self.title">Always wanted to self-publish?</h3>
-            <p data-i18n="self.body">Our model, funding, and GenAI tools give you everything you need to own your games and your success.</p>
-          </article>
-          <div class="bento-image bento-image-tall reveal reveal-delay-1">
-            <img
-              src="https://cdn.prod.website-files.com/686bc02317d329bcecd51c83/6877b67780d1bf2dcd1c28ff_0fa82ddd-8ebd-4062-99f7-517419a12fc1.avif"
-              alt="Game development workspace"
-              loading="lazy"
-            >
+          <!-- Warpzone Grand Prix — automatic top-down arcade racing scene.
+               Sits in the bento cell that previously held "Always wanted to
+               self-publish?" so it occupies a single grid cell, matching the
+               size and rhythm of the surrounding glass cards. -->
+          <div class="bento-image grand-prix reveal reveal-delay-2" id="grand-prix-wrap"
+               role="img"
+               aria-label="Warpzone Grand Prix — animated arcade racing scene with four cars looping a top-down circuit">
+            <canvas id="grand-prix" class="grand-prix-canvas"></canvas>
+            <div class="grand-prix-hud" aria-hidden="true">
+              <div class="grand-prix-hud-top">
+                <div class="gp-badge">
+                  <span class="gp-badge-dot"></span>
+                  <span data-i18n="gp.badge">Warpzone Grand Prix</span>
+                </div>
+                <div class="gp-lap">
+                  <span class="gp-lap-label" data-i18n="gp.lap">LAP</span>
+                  <span class="gp-lap-val" id="gp-lap-val">01</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <p class="section-tagline reveal" data-i18n="studios.tagline">
@@ -334,5 +484,8 @@
 
   <script src="js/translations.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/game.js" defer></script>
+  <script src="js/fund-os.js" defer></script>
+  <script src="js/grand-prix.js" defer></script>
 </body>
 </html>
